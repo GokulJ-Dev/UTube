@@ -1,14 +1,8 @@
-const heading = React.createElement("h2", { id: "Dev" }, "Hello Gokul Developer!!");
-
-const nested = React.createElement("div", { id: "Parent" },
-    [React.createElement("div", { id: "Child1" },
-        [React.createElement("h1", {}, "Hello Nested Trail"), React.createElement("h4", {}, "Hello Nested Trail")]),
-    React.createElement("div", { id: "Child2" },
-        [React.createElement("h1", {}, "Hello Nested Trail2"), React.createElement("h4", {}, "Hello Nested Trail2")])]);
-
-console.log(nested);
-
+const parent = React.createElement("div", { id: "Parent" },
+    React.createElement("div", { id: "Child" }, [
+        React.createElement("h1", { id: "h1Tag" }, "Hello Gokul From React"), React.createElement("h4", { id: "h4Tag" }, "Rock it mannn!")
+    ]));
 const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
 
 
-root.render(nested);
