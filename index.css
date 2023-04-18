@@ -1,3 +1,30 @@
-#root {
-    color: crimson,
+#welcomeJSX {
+    color: chocolate;
+}
+
+/* assignment 3 styles */
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    width: 8%;
+}
+
+.search {
+    height: 25px;
+    width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 2px;
+    border: 1px solid burlywood;
+}
+
+.user {
+    width: 3%;
 }
