@@ -8,7 +8,6 @@ const Body = () => {
     const [demoData, setDemoData] = useState([]);
     const [searchedRestaurants, setSearchedRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
-
     useEffect(() => {
         getRestaurants();
     }, []);
@@ -21,7 +20,10 @@ const Body = () => {
         setSearchedRestaurants(swiggyData);
     }
     // conditional Rendering 
-    return demoData.length === 0 ? (<Loader />) : (
+    return demoData.length === 0 ? (
+        <div className="body-container">
+            {swiggyMock.map(res => <Loader />)}
+        </div>) : (
         <>
             < div >
                 <input
