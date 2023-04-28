@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
     const [title, setTitle] = useState("Swiggy");
     return (
@@ -12,7 +13,8 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Offers</li>
+                    <li>
+                        <Link to="/offers" className="link-to-tag">Offers</Link></li>
                     <li>Help</li>
                     <li>Sign In</li>
                     <li>Cart</li>

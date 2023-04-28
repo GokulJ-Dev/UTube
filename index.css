@@ -112,5 +112,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
 
+.link-to-tag {
+    text-decoration: none;
+    color: black;
 }
