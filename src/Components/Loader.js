@@ -1,6 +1,17 @@
+import Shimmer from "react-shimmer-effect";
+
+
 const Loader = () => {
     return (
-        <h3>Loader Component</h3>
+        <div className="shimmer-container">
+            <Shimmer>
+                <div className="shimmer-restro-card" />
+                <div className="shimmer-line" />
+                <div className="shimmer-line" />
+                <div className="shimmer-line" />
+                <div className="shimmer-line" />
+            </Shimmer>
+        </div>
     )
 }
 
