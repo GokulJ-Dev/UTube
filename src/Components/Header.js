@@ -15,7 +15,7 @@ const Header = () => {
                 <ul>
                     <li>
                         <Link to="/offers" className="link-to-tag">Offers</Link></li>
-                    <li>Help</li>
+                    <li><Link to="/help" className="link-to-tag">Help</Link></li>
                     <li>Sign In</li>
                     <li>Cart</li>
                 </ul>
