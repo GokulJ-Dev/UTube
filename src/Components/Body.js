@@ -3,18 +3,19 @@ import RestaurantCard from "./RestaurantCard";
 import { restPerundurai, swiggyMock } from "../utils/mockData";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import { GET_RESTAURANT_LIST } from "../utils/constants";
 
 const Body = () => {
-    //let demodata = restPerundurai;
     const [demoData, setDemoData] = useState([]);
     const [searchedRestaurants, setSearchedRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
+
     useEffect(() => {
         getRestaurants();
     }, []);
 
     const getRestaurants = async () => {
-        let data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+        let data = await fetch(GET_RESTAURANT_LIST);
         let json = await data?.json();
         let swiggyData = json?.data?.cards[2]?.data?.data?.cards;
         setDemoData(swiggyData);
@@ -22,10 +23,13 @@ const Body = () => {
     }
     // conditional Rendering 
     return demoData.length === 0 ? (
-        <div style={{ display: "flex", flexWrap: "wrap" }}> {/* Inline Styling  JS object*/}
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
             {swiggyMock.map(res => <Loader key={res.data.id} />)}
         </div>) : (
         <>
+            {
+                console.log("Restaurant List RENDER")
+            }
             < div >
                 <input
                     type="text"
@@ -48,9 +52,9 @@ const Body = () => {
                             <RestaurantCard restaurantDetails={res.data} />
                         </Link>
                     ))}
-                    {/*Component Composition*/}
                 </div>
             </>)}
+
         </>
     )
 }
