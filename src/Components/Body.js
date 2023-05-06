@@ -35,6 +35,7 @@ const Body = () => {
                     type="text"
                     value={searchText}
                     onChange={(e) => { setSearchText(e.target.value) }}
+                    className=" border-2"
                 />
                 < button className="search-btn" onClick={() => {
                     let searchedData = demoData.filter(res => res.data?.name.toLowerCase().includes(searchText.toLowerCase()));
