@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -8,16 +8,25 @@ import Error from "./Components/Error";
 import RestaurantDetails from "./Components/RestaurantDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Help from "./Components/Help";
+import UserInfo from "./utils/userContext";
 
 const Instamart = lazy(() => import("./Components/Instamart"));
 
 
 const AppLayout = () => {
+
+    const [user, setUser] = useState({
+
+        name: "xxx",
+        email: "yyy@gmail.com"
+
+    })
+
     return (
-        <>
+        <UserInfo.Provider value={{ user: user, setUser: setUser }}>
             <Header />
             <Outlet />
-        </>
+        </UserInfo.Provider>
     )
 }
 

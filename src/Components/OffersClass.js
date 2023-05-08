@@ -1,4 +1,5 @@
 import React from "react";
+import UserInfo from "../utils/userContext";
 
 class OfferClass extends React.Component {
 
@@ -30,7 +31,15 @@ class OfferClass extends React.Component {
         console.log("Render method class component");
         return (
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "yellow" }}>
-                <h2>Offers</h2>
+                <h2>Offerssssss</h2>
+                <UserInfo.Consumer>
+                    {
+                        (value) => {
+                            <h1>Sorry- {value.name} - {value.email}
+                            </h1>
+                        }
+                    }
+                </UserInfo.Consumer>
                 <p>
                     {title} It is a class component
                     {" " + this.state.name + this.state.count}

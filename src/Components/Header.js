@@ -5,8 +5,8 @@ const Header = () => {
 
     const network = useNetwork();
     return (
-        <div className=" flex  justify-between items-center">
-            <div className="flex justify-between items-center">
+        <div className=" flex  justify-between items-center border border-black">
+            <div className=" flex h-30 justify-between items-center">
                 <img className=" h-20 w-20" src="https://logosandtypes.com/wp-content/uploads/2021/01/Swiggy.png" alt="logo" />
                 <h3 className="text-sky-400">Swiggy</h3> {/*Inline styling */}
             </div>
