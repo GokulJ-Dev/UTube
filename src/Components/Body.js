@@ -1,14 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { restPerundurai, swiggyMock } from "../utils/mockData";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import { GET_RESTAURANT_LIST } from "../utils/constants";
+import UserInfo from "../utils/userContext";
 
 const Body = () => {
     const [demoData, setDemoData] = useState([]);
     const [searchedRestaurants, setSearchedRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
+
+    const { user, setUser } = useContext(UserInfo);
+
 
     useEffect(() => {
         getRestaurants();
@@ -35,6 +39,7 @@ const Body = () => {
                     type="text"
                     value={searchText}
                     onChange={(e) => { setSearchText(e.target.value) }}
+                    className=" border-2"
                 />
                 < button className="search-btn" onClick={() => {
                     let searchedData = demoData.filter(res => res.data?.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -44,9 +49,19 @@ const Body = () => {
                     let filteredData = demoData.filter(res => res.data?.avgRating > 4);
                     setSearchedRestaurants(filteredData);
                 }}>Best Restaurants</button>
+                <h1>{user.name}</h1>
+                <h1>{user.email}</h1>
+                <input type="text" value={user.name} className=" border-2" onChange={(e) => {
+                    setUser(
+                        {
+                            ...user,
+                            name: e.target.value
+                        }
+                    )
+                }} />
             </div >
             {searchedRestaurants.length == 0 ? (<h2>No RestaurantCard matches your search/filter</h2>) : (<>
-                <div className="body-container">
+                <div className=" flex flex-wrap">
                     {searchedRestaurants.map(res => (
                         <Link to={"/restaurants/" + res?.data?.id} className="link-to-tag" key={res?.data?.id} >
                             <RestaurantCard restaurantDetails={res.data} />
