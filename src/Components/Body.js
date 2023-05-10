@@ -4,14 +4,12 @@ import { restPerundurai, swiggyMock } from "../utils/mockData";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import { GET_RESTAURANT_LIST } from "../utils/constants";
-import UserInfo from "../utils/userContext";
 
 const Body = () => {
     const [demoData, setDemoData] = useState([]);
     const [searchedRestaurants, setSearchedRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
 
-    const { user, setUser } = useContext(UserInfo);
 
 
     useEffect(() => {
@@ -49,16 +47,6 @@ const Body = () => {
                     let filteredData = demoData.filter(res => res.data?.avgRating > 4);
                     setSearchedRestaurants(filteredData);
                 }}>Best Restaurants</button>
-                <h1>{user.name}</h1>
-                <h1>{user.email}</h1>
-                <input type="text" value={user.name} className=" border-2" onChange={(e) => {
-                    setUser(
-                        {
-                            ...user,
-                            name: e.target.value
-                        }
-                    )
-                }} />
             </div >
             {searchedRestaurants.length == 0 ? (<h2>No RestaurantCard matches your search/filter</h2>) : (<>
                 <div className=" flex flex-wrap">

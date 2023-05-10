@@ -8,7 +8,9 @@ import Error from "./Components/Error";
 import RestaurantDetails from "./Components/RestaurantDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Help from "./Components/Help";
-import UserInfo from "./utils/userContext";
+import store from "./utils/store";
+import { Provider } from "react-redux";
+import RestaurantLists from "./Components/RestaurantLists";
 
 const Instamart = lazy(() => import("./Components/Instamart"));
 
@@ -23,10 +25,10 @@ const AppLayout = () => {
     })
 
     return (
-        <UserInfo.Provider value={{ user: user, setUser: setUser }}>
+        <Provider store={store}>
             <Header />
             <Outlet />
-        </UserInfo.Provider>
+        </Provider>
     )
 }
 
@@ -53,6 +55,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/help",
                 element: <Help />
+            },
+            {
+                path: "/restaurant-lists",
+                element: <RestaurantLists />
             },
             {
                 path: "/instamart",

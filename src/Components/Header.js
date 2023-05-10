@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useNetwork from "../utils/useNetwork";
+import { useSelector } from "react-redux";
+
 const Header = () => {
+
+    const favResto = useSelector(store => store.favouriteRestaurants);
 
     const network = useNetwork();
     return (
@@ -18,7 +22,7 @@ const Header = () => {
                         <Link to="/offers" className="link-to-tag">Offers</Link></li>
                     <li className=" pl-1.5"><Link to="/help" className="link-to-tag">Help</Link></li>
                     <li className=" pl-1.5">Sign In</li>
-                    <li className=" pl-1.5">Cart</li>
+                    <li className=" pl-1.5 text-blue-500"> <Link to="/restaurant-lists">Restaurants ({favResto.items.length})</Link></li>
                 </ul>
             </div>
         </div >
